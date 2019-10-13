@@ -1,0 +1,19 @@
+\chapter{算法实现}
+\begin{lstlisting}
+def isLinkable(Trip_1, Trip_2):
+    if abs(Trip_1.num - Trip_2.num) > 1:
+        return False
+    elif (max(Trip_1.num, Trip_2.num) == 3) and (min(Trip_1.num, Trip_2.num) == 2):
+        return False
+    if (Trip_1.oTime > Trip_2.oTime):
+        trip_1 = Trip_2
+        trip_2 = Trip_1
+    else:
+        trip_1 = Trip_1
+        trip_2 = Trip_2
+    # 这里也许可以做文章，不同的判别方式
+    if trip_1.dTime < (trip_2.oTime - travelTime(trip_1.node_d,trip_2.node_o)):
+        return True
+    else:
+        return False
+\end{lstlisting}
